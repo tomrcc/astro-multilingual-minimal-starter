@@ -285,6 +285,22 @@
       },
       "total": 1
     },
+    "index:f2631fee-f0a5-4445-b79b-cccdf6a52ba0:heading": {
+      "original": " List rendering test ",
+      "value": null,
+      "pages": {
+        "index.html": 1
+      },
+      "total": 1
+    },
+    "index:f2631fee-f0a5-4445-b79b-cccdf6a52ba0:text_content": {
+      "original": "<p>A few list shapes to exercise stale detection across markdown's tight/loose\nrendering and CloudCannon's serializer:</p>\n<p>A tight unordered list:</p>\n<ul>\n<li>Espresso</li>\n<li>Cappuccino</li>\n<li>Flat white</li>\n</ul>\n<p>A loose unordered list:</p>\n<ul>\n<li>\n<p>Espresso</p>\n</li>\n<li>\n<p>Cappuccino</p>\n</li>\n<li>\n<p>Flat white</p>\n</li>\n</ul>\n<p>An ordered list:</p>\n<ol>\n<li>Grind the beans</li>\n<li>Pull the shot</li>\n<li>Steam the milk</li>\n</ol>\n<p>A nested list:</p>\n<ul>\n<li>Hot drinks\n<ul>\n<li>Espresso</li>\n<li>Mocha</li>\n</ul>\n</li>\n<li>Cold drinks\n<ul>\n<li>Iced latte</li>\n</ul>\n</li>\n</ul>\n<p>A list with a multi-paragraph item:</p>\n<ul>\n<li>\n<p>This item runs to two paragraphs.</p>\n<p>This second paragraph belongs to the same item.</p>\n</li>\n<li>\n<p>This item is a single line.</p>\n</li>\n</ul>\n",
+      "value": null,
+      "pages": {
+        "index.html": 1
+      },
+      "total": 1
+    },
     "nav:about": {
       "original": " About ",
       "value": null,

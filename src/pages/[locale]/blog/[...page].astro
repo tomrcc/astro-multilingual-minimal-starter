@@ -1,28 +1,35 @@
 ---
 import type { Page } from "astro";
-import BlogList from "../../components/blog/list.astro";
-import BlogPagination from "../../components/blog/pagination";
-import Layout from "../../layouts/Paginated.astro";
+import BlogList from "../../../components/blog/list.astro";
+import BlogPagination from "../../../components/blog/pagination";
+import Layout from "../../../layouts/Paginated.astro";
 import { getCollection, getEntry, type CollectionEntry } from "astro:content";
+import { localeCodes, blogCollectionFor } from "../../../utils/locales";
 
 type Props = {
   page: Page<CollectionEntry<"blog">>;
+  locale: string;
 };
 
 export async function getStaticPaths({ paginate }: { paginate: Function }) {
-  const posts = await getCollection("blog");
   const page = await getEntry("pages", "blog");
-  posts.sort((a, b) => {
-    const aDate = new Date(a.data.post_hero.date);
-    const bDate = new Date(b.data.post_hero.date);
-    return bDate - aDate;
-  });
-  if (!page) return;
-  return paginate(posts, {
-    pageSize: "page_size" in page.data ? page.data.page_size : 6,
-  });
+  if (!page) return [];
+  const pageSize = "page_size" in page.data ? page.data.page_size : 6;
+
+  const paths = [];
+  for (const locale of localeCodes) {
+    const posts = await getCollection(blogCollectionFor(locale));
+    posts.sort((a, b) => {
+      const aDate = new Date(a.data.post_hero.date);
+      const bDate = new Date(b.data.post_hero.date);
+      return bDate.getTime() - aDate.getTime();
+    });
+    paths.push(...paginate(posts, { params: { locale }, pageSize }));
+  }
+  return paths;
 }
 
+const { locale } = Astro.props;
 const page = await getEntry("pages", "blog");
 const frontmatter = page?.data;
 const pagination = Astro.props.page;
@@ -33,8 +40,6 @@ const { data: posts } = pagination;
   <div class="mx-auto max-w-6xl px-8 py-16">
     <h1
       class="text-3xl md:text-4xl font-bold text-center mb-8"
-      data-editable="text"
-      data-prop="title"
       data-rosey="title"
     >
       {frontmatter.title}
@@ -50,8 +55,8 @@ const { data: posts } = pagination;
       </script>
     </div>
     <section>
-      <BlogList posts={posts} />
-      <BlogPagination pagination={pagination} />
+      <BlogList posts={posts} locale={locale} />
+      <BlogPagination pagination={pagination} basePath={`/${locale}/blog`} />
     </section>
   </div>
 </Layout>

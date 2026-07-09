@@ -10,26 +10,26 @@ post_hero:
     - tailwind
   author: T Richardson
   image: /src/assets/images/blog/featured-image-2.jpg
-  image_alt: Children working around a laptop in a busy classroom.
+  image_alt: Kinder, die in einem belebten Klassenzimmer um einen Laptop herum arbeiten.
 thumb_image_path: /src/assets/images/blog/blog-thumb-6.jpg
-thumb_image_alt: A group of people working around a table, as seen from above.
+thumb_image_alt: Eine Gruppe von Menschen, die um einen Tisch herum arbeiten, von oben gesehen.
 seo:
-  page_description: A post describing how Tailwind CSS v4 is used for styling.
+  page_description: Ein Beitrag, der beschreibt, wie Tailwind CSS v4 für die Gestaltung verwendet wird.
   canonical_url:
   featured_image: /images/blog/featured-image-2.jpg
-  featured_image_alt: Children working around a laptop in a busy classroom.
+  featured_image_alt: Kinder, die in einem belebten Klassenzimmer um einen Laptop herum arbeiten.
   author_twitter_handle:
   open_graph_type: article
   no_index: false
 ---
-This site uses Tailwind CSS v4 with the CSS-first configuration approach. The main stylesheet at `src/styles/main.css` imports Tailwind with `@import "tailwindcss"`.
+Diese Website verwendet Tailwind CSS v4 mit dem CSS-First-Konfigurationsansatz. Das Haupt-Stylesheet unter `src/styles/main.css` importiert Tailwind mit `@import "tailwindcss"`.
 
-Tailwind v4 uses `@tailwindcss/vite` as a Vite plugin instead of the older `@astrojs/tailwind` integration. Configuration happens in CSS using `@layer theme` rather than a JavaScript config file.
+Tailwind v4 verwendet `@tailwindcss/vite` als Vite-Plugin anstelle der älteren `@astrojs/tailwind`-Integration. Die Konfiguration erfolgt in CSS mit `@layer theme` statt in einer JavaScript-Konfigurationsdatei.
 
-Key differences from Tailwind v3:
+Wesentliche Unterschiede zu Tailwind v3:
 
-- No `tailwind.config.js` file needed
-- Use `@import "tailwindcss"` instead of `@tailwind` directives
-- Configuration via CSS custom properties
-- Automatic content detection (no `content` paths)
-- Dynamic spacing and grid values without extending config
+- Keine `tailwind.config.js`-Datei erforderlich
+- Verwenden Sie `@import "tailwindcss"` anstelle der `@tailwind`-Direktiven
+- Konfiguration über benutzerdefinierte CSS-Eigenschaften
+- Automatische Inhaltserkennung (keine `content`-Pfade)
+- Dynamische Abstands- und Rasterwerte, ohne die Konfiguration zu erweitern

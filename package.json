@@ -14,7 +14,7 @@
     "@astrojs/react": "^5.0.0",
     "@astrojs/rss": "^4.0.17",
     "@cloudcannon/editable-regions": "^0.0.12",
-    "@tailwindcss/vite": "^4.0.0",
+    "@tailwindcss/vite": "4.2.1",
     "@types/markdown-it": "^14.0.1",
     "@types/react": "^18.2.21",
     "@types/react-dom": "^18.2.7",
@@ -26,6 +26,6 @@
     "rosey": "^2.3.10",
     "rosey-cloudcannon-connector": "github:tomrcc/rcc-v2",
     "sharp": "^0.33.5",
-    "tailwindcss": "^4.0.0"
+    "tailwindcss": "4.2.1"
   }
 }

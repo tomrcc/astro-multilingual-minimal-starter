@@ -37,16 +37,25 @@ function buildPath(locale: string) {
 </nav>
 
 <script>
-  // Build-time HTML always reflects the default-language perspective, so fix
-  // the active-state highlight on the client for Rosey-generated locale pages.
-  const links = document.querySelectorAll<HTMLAnchorElement>(
-    "nav[aria-label='Language'] a",
-  );
-  links.forEach((link) => {
-    const active = link.pathname === window.location.pathname;
-    link.classList.toggle("text-blue-600", active);
-    link.classList.toggle("font-semibold", active);
-    link.classList.toggle("text-gray-600", !active);
-    if (active) link.setAttribute("aria-current", "true");
-  });
+  if (window.inEditorMode) {
+    // In the CloudCannon Visual Editor, locale switching is handled by the RCC's
+    // injected floating picker. Hide the nav picker so editors don't have two
+    // competing switchers (and so nav clicks don't fight the RCC's locale clone).
+    document
+      .querySelectorAll("nav[aria-label='Language']")
+      .forEach((nav) => ((nav as HTMLElement).style.display = "none"));
+  } else {
+    // Build-time HTML always reflects the default-language perspective, so fix
+    // the active-state highlight on the client for Rosey-generated locale pages.
+    const links = document.querySelectorAll<HTMLAnchorElement>(
+      "nav[aria-label='Language'] a",
+    );
+    links.forEach((link) => {
+      const active = link.pathname === window.location.pathname;
+      link.classList.toggle("text-blue-600", active);
+      link.classList.toggle("font-semibold", active);
+      link.classList.toggle("text-gray-600", !active);
+      if (active) link.setAttribute("aria-current", "true");
+    });
+  }
 </script>
